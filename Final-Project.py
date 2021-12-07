@@ -69,24 +69,29 @@ def guess1(wordlst):
     wrong = 0
     tess.penup()
     count1=0
+    correct = 0
+    newlst = set(wordlst)
 
     for elm in wordlst:
         count+=1
-    while True:
+    for elm in wordlst:
+        count+=1
+    state = True
+    while wrong <=5 and correct != len(newlst):
         guess = str(input("Guess character: "))
         if guess in wordlst:
-            count
+            correct+=1
             for i in wordlst:
                 count1+=1
                 if guess ==i:
                     keyx = str(count1) + "x"
                     x = dictx[keyx]
-                    tess.goto(x,0)
+                    keyy = str(count1) + "y"
+                    y = dicty[keyy]
+                    tess.goto(x,y)
                     tess.pendown()
                     tess.write(guess, font=("Arial", 60, "normal"))
-                    correct = 1
                     tess.penup()
-                    count1=0
         if correct == count:
             tess.goto(100,280)
             tess.color('green')
@@ -186,13 +191,4 @@ def main():
 
 
 main()
-
-
-
-
-
-
-
-
-
 
